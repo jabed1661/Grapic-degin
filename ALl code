@@ -1,0 +1,78 @@
+#include <GL/freeglut.h> // Header for FreeGLUT
+void display()
+{
+glClear(GL_COLOR_BUFFER_BIT); // Clear the screen
+glColor3f(1.0, .5, 0.0); // Set point color to red
+glPointSize(10.0);
+glLineWidth(2.0); // Set point size
+glBegin(GL_LINE_STRIP); // Start drawing multipal lines
+glVertex2f(-.8f, 0.6f); // Point at center
+ // Point at center
+glVertex2f(-.4f, 0.4f); // Point at center
+glVertex2f(.0f, 0.6f); // Point at center
+glVertex2f(.4f, 0.4f);
+glEnd();
+
+//=========================loops
+glColor3f(.0,1.0,0.0);
+glBegin(GL_LINE_LOOP);
+glVertex2f(-.8f, 0.6f); // Point at center
+ // Point at center
+glVertex2f(-.4f, 0.4f); // Point at center
+glVertex2f(.0f, 0.6f); // Point at center
+glVertex2f(.4f, 0.4f);
+glEnd();
+//glVertex2f(-.4f, 0.4f);
+ // Start drawing multipal lines
+
+
+ // ============================Triangle======================
+ glColor3f(1.0,0.0,0.0);
+ glBegin(GL_TRIANGLES);
+ glVertex2f(0.2f,0.2f);
+ glVertex2f(0.6f,0.2f);
+ glVertex2f(0.4f,0.6f);
+
+// Point at center
+glEnd();
+
+//========squre======
+glColor3f(.0,1.0,0.1);
+glBegin(GL_QUADS);
+glVertex2f(0.2f,-0.2f);
+ glVertex2f(0.6f,-0.2f);
+ glVertex2f(0.6f,-0.6f);
+ glVertex2f(0.2f,-0.6f);
+ glEnd();
+
+//========polygon=======
+
+glColor3f(1.0,0.5,0.1);
+glBegin(GL_POLYGON);
+glVertex2f(-0.8f,-0.2f);
+ glVertex2f(-0.6f,-0.7f);
+ glVertex2f(-0.3f,-0.6f);
+ glVertex2f(-0.4f,-0.3f);
+ glEnd();
+
+glFlush(); // Render the point
+}
+void init()
+{
+glClearColor(1.0, 1.0, 1.0, 0.0); // White background
+glMatrixMode(GL_PROJECTION);
+glLoadIdentity();
+gluOrtho2D(-1 ,1, -1, 1); // 2D coordinate system
+}
+int main(int argc, char** argv)
+{
+glutInit(&argc, argv); // Initialize GLUT
+glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // Single buffer, RGB
+glutInitWindowSize(500, 500); // Window size
+glutInitWindowPosition(100, 100); // Window position
+glutCreateWindow("Display a Point"); // Create window
+init(); // Initialize settings
+glutDisplayFunc(display); // Register display function
+glutMainLoop(); // Start event loop
+return 0;
+}
